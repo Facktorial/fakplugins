@@ -1,0 +1,5 @@
+out
+build
+build_docs
+CMakeUserPresets.json
+.cache

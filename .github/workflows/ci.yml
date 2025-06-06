@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y clang-format clang-tidy cmake build-essential doxygen
+
+      - name: Run clang-format
+        run: |
+          find include src examples -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+
+      - name: Run build.sh
+        run: |
+          chmod +x ./build.sh
+          ./build.sh
+
+      - name: Run clang-tidy
+        run: |
+          mkdir -p build
+          cd build
+          cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          cd ..
+          clang-tidy -p build $(find src include examples -name '*.cpp')
