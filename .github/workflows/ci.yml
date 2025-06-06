@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y clang-format clang-tidy cmake build-essential doxygen
+          sudo apt install -y clang-format clang-tidy cmake build-essential doxygen grap
           pip install conan
 
       - name: Run clang-format
@@ -33,3 +33,15 @@ jobs:
         run: |
           cd build
           make tidy
+
+      - name: Set up Python (for ghp-import)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install ghp-import
+        run: pip install ghp-import
+
+      - name: Deploy to GitHub Pages
+        run: |
+          ghp-import -n -p -f build_docs/
