@@ -26,6 +26,7 @@ jobs:
       - name: Run build.sh
         run: |
           chmod +x ./build.sh
+          conan profile detect
           ./build.sh
 
       - name: Run clang-tidy
