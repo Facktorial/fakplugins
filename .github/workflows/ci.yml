@@ -17,6 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y clang-format clang-tidy cmake build-essential doxygen
+          pip install conan
 
       - name: Run clang-format
         run: |
