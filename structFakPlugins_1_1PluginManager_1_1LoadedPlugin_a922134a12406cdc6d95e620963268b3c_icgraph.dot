@@ -1,0 +1,13 @@
+digraph "FakPlugins::PluginManager::LoadedPlugin::cleanup"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="FakPlugins::PluginManager\l::LoadedPlugin::cleanup",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="FakPlugins::PluginManager\l::LoadedPlugin::operator=",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structFakPlugins_1_1PluginManager_1_1LoadedPlugin.html#a72ce3af32482a1a40f706bd5caf71442",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="FakPlugins::PluginManager\l::LoadedPlugin::~LoadedPlugin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structFakPlugins_1_1PluginManager_1_1LoadedPlugin.html#a0c38bc1c9cb45cbab15901e586477d8f",tooltip=" "];
+}
