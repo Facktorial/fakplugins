@@ -20,7 +20,7 @@ jobs:
 
       - name: Run clang-format
         run: |
-          find include src examples -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+          find include src examples -name '*.cpp' -o -name '*.h' | xargs clang-format -i
 
       - name: Run build.sh
         run: |

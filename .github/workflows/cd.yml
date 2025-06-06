@@ -1,16 +1,26 @@
 name: CD
-
 on:
   push:
     branches: [main]
-
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz cmake build-essential
+
+      - name: Configure CMake with Doxygen
+        run: |
+          cmake -B build -DENABLE_DOXYGEN=ON -DLIFT_DOCS=ON
+
+      - name: Build docs
+        run: |
+          cmake --build build --target doxygen-docs
 
       - name: Set up Python (for ghp-import)
         uses: actions/setup-python@v5
@@ -20,11 +30,6 @@ jobs:
       - name: Install ghp-import
         run: pip install ghp-import
 
-      - name: Build docs
-        run: |
-          mkdir -p docs/build_docs
-          doxygen docs/Doxyfile
-
       - name: Deploy to GitHub Pages
         run: |
-          ghp-import -n -p docs/build_docs
+          ghp-import -n -p -f build_docs
