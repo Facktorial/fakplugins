@@ -27,9 +27,12 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install dependencies
+        run: sudo apt install doxygen graphviz
+
       - name: Install ghp-import
         run: pip install ghp-import
 
       - name: Deploy to GitHub Pages
         run: |
-          ghp-import -n -p -f build_docs
+          ghp-import -n -p -f build_docs/
